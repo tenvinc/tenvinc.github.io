@@ -1,0 +1,103 @@
+<!DOCTYPE HTML>
+<!--
+	Solid State by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>Advanced Lane Detection</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+	</head>
+	<body class="is-preload">
+
+		<!-- Page Wrapper -->
+			<div id="page-wrapper">
+
+				<!-- Header -->
+					<header id="header">
+                        <h1><a href="index.html">My Portfolio</a></h1>
+						<nav>
+							<a href="#menu">Menu</a>
+						</nav>
+					</header>
+
+				<!-- Menu -->
+					<nav id="menu">
+						<div class="inner">
+							<h2>Menu</h2>
+							<ul class="links">
+								<li><a href="index.html">Home</a></li>
+							</ul>
+							<a href="#" class="close">Close</a>
+						</div>
+                    </nav>
+
+				<!-- Wrapper -->
+					<section id="wrapper">
+						<header>
+							<div class="inner">
+								<h2>Advanced Lane Detection</h2></p>
+							</div>
+						</header>
+
+						<!-- Content -->
+							<div class="wrapper">
+								<div class="inner">
+                                    <iframe width="853" height="505" src="https://www.youtube.com/embed/f3otU_k4JJs" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+                                    <h3 class="major">What the project is about</h3>
+                                    <p align="justify">This is a project from Udacity's Self-driving Car Engineer Nanodegree. The aim of this project is to develop a computer vision pipeline that can 
+                                        robustly detect the lane lines and overlay a projection of the lane detected, including information on the curvature of the lane and the position of
+                                        the car from the center of the lane.
+                                        The pipeline consists of the following:
+                                    </p>
+                                    <ol>
+                                        <li>Camera calibration to get camera matrix and distortion</li>
+                                        <li>Apply distortion correction</li>
+                                        <li>Use a combination of color and gradient thresholding</li>
+                                        <li>Do a perspective transform to bird's eye view</li>
+                                        <li>Identify lane pixels</li>
+                                        <li>Do curve fitting, curvature and position calculations</li>
+                                        <li>Unwarp the image and overlay on the original</li>
+                                    </ol>
+                                    
+                                    <h3 class="major">Challenges faced</h3>
+                                    <h4>Filtering lane pixels from road</h4>
+                                    <p align="justify" >
+                                    The main challenge in this project is filtering out the pixels corresponding to the lanes, as much as possible. Although the road markings may 
+                                    be rather distinct from the road for human eyes, with the markings being either yellow or white, this has proven to be rather difficult for computers. 
+                                    Due to different lighting conditions and imperfections in the road, this task can be rather challenging. An approach used in this project was the <b>usage of
+                                    color spaces like HSL</b>. RGB is not suitable because the color information is tied deeply with the light intensity information unlike HSV or HSL. In particular, the S channel
+                                    and the L channel is very useful in filtering out the lighter coloured yellow and white lane markings. Markings that are further away may not be captured as prominently, which is where
+                                    Sobel operators come into play. Sobel can detect strong gradients in either the x or y axis. By combining them, using the magnitude of both x and y results and the direction of the gradient,
+                                    we can get detections previously missed by color thresholds alone.
+                                    </p>
+                                    <h4>Distortions due to perspective</h4>
+                                    <p align="justify" >
+                                    Under the pinhole camera model, parallel lines along the camera view direction converge to a common point, called the vanishing point. Although, straight lines can still be detected 
+                                    without correcting for this, information on the curvature is lost for curved lanes, as the distance between the 2 lanes seem to be decreasing even if they are parallel. Doing a bird's eye view 
+                                    tranform helps to make these lanes parallel again.
+                                    </p>
+                                    <p>For more details, visit the <a href="https://github.com/tenvinc/udacity-self-driving/tree/master/advanced_lane_lines">project repo</a>.</p>
+									
+								</div>
+							</div>
+
+					</section>
+
+			</div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>
